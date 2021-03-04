@@ -1,12 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
+import ExpensesSummary from "./ExpensesSummary";
 import ExpenseListItem from "./ExpenseListItem";
-import selectExpenses from "../selectors/expenses";
+import getVisibleExpenses from "../selectors/expenses";
 
 const ExpenseList = (props) => (
   <div>
     <h1>Expense List</h1>
-    <p>Number of expenses: {props.expenses.length}</p>
+    <ExpensesSummary />
+    {/* <p>Number of expenses: {props.expenses.length}</p>
+    <p>Total amount: {props.totalExpenseAmount}</p> */}
     {props.expenses.map((expense) => (
       <ExpenseListItem {...expense} key={expense.id} />
     ))}
@@ -15,7 +18,7 @@ const ExpenseList = (props) => (
 
 const mapStatetoProps = (state) => {
   return {
-    expenses: selectExpenses(state.expenses, state.filters),
+    expenses: getVisibleExpenses(state.expenses, state.filters),
   };
 };
 

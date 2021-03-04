@@ -1,4 +1,21 @@
-import { addExpense, editExpense, removeExpense } from "../../actions/expenses";
+import { addExpense, editExpense, removeExpense, setExpenses } from "../../actions/expenses";
+
+import expenses from "../fixtures/expenses";
+// import database from "../../firebase/firebase";
+
+// beforeEach((done) => {
+//   const expensesData = {};
+//   expenses.forEach(({ id, title, description, amount, createdAt }) => {
+//     expensesData[id] = { title, description, amount, createdAt };
+//   });
+//   console.log(process.env.FIREBASE_DATABASE_URL);
+//   database
+//     .ref("expenses")
+//     .set(expensesData)
+//     .then(() => {
+//       done();
+//     });
+// });
 
 test("Should setup remove expense action object", () => {
   const action = removeExpense({ id: "123abc" });
@@ -35,5 +52,13 @@ test("Should setup add expense action object without provided value", () => {
   expect(action).toEqual({
     type: "ADD_EXPENSE",
     expense: { id: expect.any(String), title: "", amount: 0, createdAt: 0, description: "" },
+  });
+});
+
+test("Should setup set expenses action object with data", () => {
+  const action = setExpenses(expenses);
+  expect(action).toEqual({
+    type: "SET_EXPENSES",
+    expenses,
   });
 });
