@@ -15,6 +15,14 @@ const appRoot = document.getElementById("app");
 
 const store = configureStore();
 
+console.log(process.env.FIREBASE_API_KEY);
+console.log(process.env.FIREBASE_AUTH_DOMAIN);
+console.log(process.env.FIREBASE_DATABASE_URL);
+console.log(process.env.FIREBASE_PROJECT_ID);
+console.log(process.env.FIREBASE_STORAGE_BUCKET);
+console.log(process.env.FIREBASE_MESSAGING_SENDER_ID);
+console.log(process.env.FIREBASE_MEASUREMENT_ID);
+
 const jsx = (
   <Provider store={store}>
     <AppRouter />
