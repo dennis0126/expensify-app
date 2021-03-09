@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { startLogin } from "../actions/auth";
+import { startLogin, startLoginAnonymous } from "../actions/auth";
 
 const LoginPage = (props) => (
   <div className="box-layout">
@@ -17,12 +17,16 @@ const LoginPage = (props) => (
       <button className="login-form__button button" onClick={props.startLogin}>
         Google Login
       </button>
+      <button className="login-form__button button" onClick={props.startLoginAnonymous}>
+        Anonymous Login
+      </button>
     </div>
   </div>
 );
 
 const mapDispatchtoProps = (dispatch) => ({
   startLogin: () => dispatch(startLogin()),
+  startLoginAnonymous: () => dispatch(startLoginAnonymous()),
 });
 
 export default connect(undefined, mapDispatchtoProps)(LoginPage);
