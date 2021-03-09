@@ -1,18 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
-import ExpensesSummary from "./ExpensesSummary";
 import ExpenseListItem from "./ExpenseListItem";
 import getVisibleExpenses from "../selectors/expenses";
 
 const ExpenseList = (props) => (
   <div>
-    <h1>Expense List</h1>
-    <ExpensesSummary />
-    {/* <p>Number of expenses: {props.expenses.length}</p>
-    <p>Total amount: {props.totalExpenseAmount}</p> */}
-    {props.expenses.map((expense) => (
-      <ExpenseListItem {...expense} key={expense.id} />
-    ))}
+    <div className="content-container">
+      <div className="list-header">
+        <div className="show-for-desktop">Expense</div>
+        <div className="show-for-desktop">Amount</div>
+        <div className="show-for-mobile">Expenses</div>
+      </div>
+      <div className="list-body">
+        {props.expenses.length > 0 ? (
+          props.expenses.map((expense) => <ExpenseListItem {...expense} key={expense.id} />)
+        ) : (
+          <div className="list-item list-item--message">No expenses</div>
+        )}
+      </div>
+    </div>
   </div>
 );
 

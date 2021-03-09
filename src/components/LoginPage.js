@@ -3,13 +3,21 @@ import { connect } from "react-redux";
 import { startLogin } from "../actions/auth";
 
 const LoginPage = (props) => (
-  <div>
-    <form>
-      <input type="text" name="username" placeholder="username"></input>
-      <input type="password" name="password" placeholder="password"></input>
-      <button>Login</button>
-    </form>
-    <button onClick={props.startLogin}>Google Login</button>
+  <div className="box-layout">
+    <div className="box-layout__background"></div>
+    <div className="box-layout__box">
+      <h1 className="box-layout__title">Expensify</h1>
+      <p>Get your expenses under control</p>
+      <form className="login-form">
+        <input className="login-form__input" type="text" name="username" placeholder="username"></input>
+        <input className="login-form__input" type="password" name="password" placeholder="password"></input>
+        <button className="login-form__button button">Login</button>
+      </form>
+      <div className="login-form__border"></div>
+      <button className="login-form__button button" onClick={props.startLogin}>
+        Google Login
+      </button>
+    </div>
   </div>
 );
 

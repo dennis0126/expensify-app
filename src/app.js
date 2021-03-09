@@ -7,6 +7,7 @@ import { firebase } from "./firebase/firebase";
 import { startSetExpenses } from "./actions/expenses";
 import { login, logout } from "./actions/auth";
 import { history } from "./routers/AppRouter";
+import LoadingPage from "./components/LoadingPage";
 
 import "normalize.css/normalize.css";
 import "./styles/style.scss";
@@ -14,14 +15,6 @@ import "./styles/style.scss";
 const appRoot = document.getElementById("app");
 
 const store = configureStore();
-
-console.log(process.env.FIREBASE_API_KEY);
-console.log(process.env.FIREBASE_AUTH_DOMAIN);
-console.log(process.env.FIREBASE_DATABASE_URL);
-console.log(process.env.FIREBASE_PROJECT_ID);
-console.log(process.env.FIREBASE_STORAGE_BUCKET);
-console.log(process.env.FIREBASE_MESSAGING_SENDER_ID);
-console.log(process.env.FIREBASE_MEASUREMENT_ID);
 
 const jsx = (
   <Provider store={store}>
@@ -36,7 +29,7 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(<p>Loading ...</p>, appRoot);
+ReactDOM.render(<LoadingPage />, appRoot);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {

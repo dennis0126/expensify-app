@@ -1,11 +1,14 @@
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
+const path = require("path");
 
 module.exports = merge(common, {
   mode: "development",
   devtool: "eval-cheap-module-source-map",
   devServer: {
-    contentBase: "./public",
+    contentBase: path.join(__dirname, "public"),
+    // contentBasePublicPath:
     historyApiFallback: true,
+    // publicPath: "/dist/",
   },
 });
