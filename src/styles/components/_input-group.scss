@@ -1,0 +1,24 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $m-size;
+
+  @media (min-width: $desktop-breakpoint) {
+    flex-direction: row;
+  }
+}
+
+.input-group__item {
+  margin-bottom: $s-size;
+
+  @media (min-width: $desktop-breakpoint) {
+    margin-bottom: 0;
+    margin-right: $s-size;
+  }
+}
+
+.input-group__item input,
+.input-group__item select {
+  height: 100%;
+  box-sizing: border-box;
+}
