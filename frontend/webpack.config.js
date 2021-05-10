@@ -2,7 +2,7 @@
 const path = require("path");
 
 module.exports = (env) => {
-  console.log("env", "env");
+  console.log("env", env);
   return {
     entry: "./src/app.js",
     output: {
