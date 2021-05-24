@@ -1,6 +1,6 @@
-import firebase from "firebase";
-import "@firebase/database";
-import "@firebase/auth";
+import firebase from "firebase/app";
+import "firebase/database";
+import "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -13,15 +13,9 @@ const firebaseConfig = {
   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 
-console.log("DB url", process.env.FIREBASE_DATABASE_URL);
+firebase.initializeApp(firebaseConfig);
 
-firebase.default.initializeApp(firebaseConfig);
-
-const database = firebase.default.database();
+const database = firebase.database();
 const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
-const auth = firebase.auth();
 
-export { firebase, GoogleAuthProvider, auth, database as default };
-
-// const database = null;
-// export { database as default };
+export { firebase, GoogleAuthProvider, database as default };
